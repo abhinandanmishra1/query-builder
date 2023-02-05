@@ -5,6 +5,7 @@ import {
 	FieldOptions,
 } from "../../constants";
 import SelectComponent from "../Select";
+import {FaTrash} from 'react-icons/fa';
 
 const RuleComponent: React.FC<any> = ({
 	rule,
@@ -22,14 +23,14 @@ const RuleComponent: React.FC<any> = ({
 	};
 
 	return (
-		<div className="flex w-full">
-			<div className="w-11/12 flex border">
-				<div className="w-full">
+		<div className="flex w-full h-full items-center">
+			<div className="w-11/12 flex my-1 items-center">
+				<div className="w-full flex-col items-start">
 					<label
-						htmlFor="criteria"
-						className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
+						htmlFor="field"
+						className="block ml-2 mb-2 text-xs font-medium text-white"
 					>
-						Criteria
+						Field
 					</label>
 					<SelectComponent
 						fieldName="field"
@@ -40,10 +41,10 @@ const RuleComponent: React.FC<any> = ({
 				</div>
 				<div className="w-full">
 					<label
-						htmlFor="criteria"
-						className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
+						htmlFor="condition"
+						className="block ml-2 mb-2 text-xs font-medium text-white"
 					>
-						Criteria
+						Condition
 					</label>
 					<SelectComponent
 						fieldName="condition"
@@ -55,7 +56,7 @@ const RuleComponent: React.FC<any> = ({
 				<div className="w-full">
 					<label
 						htmlFor="criteria"
-						className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
+						className="block ml-2 mb-2 text-xs font-medium text-white"
 					>
 						Criteria
 					</label>
@@ -69,10 +70,10 @@ const RuleComponent: React.FC<any> = ({
 			</div>
 			{ruleIndex > 0 && (
 				<button
-					className="w-32"
+					className="w-8 bg-[#404348] px-1.5 mt-3 text-sm flex justify-center py-2"
 					onClick={() => removeRule(groupIndex, ruleIndex)}
 				>
-					x
+					<FaTrash className="fill-[#ffffff50]" />
 				</button>
 			)}
 		</div>

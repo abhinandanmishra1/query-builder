@@ -11,7 +11,7 @@ const SelectComponent: React.FC<any> = ({ fieldName, options, value, onChange })
 
 	return (
 		<div className="m-2 relative">
-			<div onClick={toggleSelectOptions} className="flex justify-between p-2 w-full cursor-pointer border border-[#404348] bg-[#404348] text-[#ffffff52] rounded">
+			<div onClick={toggleSelectOptions} className={`flex justify-between p-2 w-full cursor-pointer border border-[#404348] bg-[#404348] text-xs rounded ${value ? 'text-white' : 'text-[#ffffff52]'}`}>
 				{
           value ? (
             <>
@@ -25,9 +25,9 @@ const SelectComponent: React.FC<any> = ({ fieldName, options, value, onChange })
         }
 			</div>
 			{toggleSelect && (
-				<div className="absolute bg-[#282B30] p-2 w-full border border-[#404348] mt-1">
+				<div className="absolute bg-[#282B30] p-2 w-full border border-[#404348] mt-1 z-40">
 					{options.map((option: any) => {
-						return <div key={option} onClick={() => onChange(fieldName, option)} className={`hover:bg-[#404348] p-1 m-1 rounded cursor-pointer ${option === value && 'bg-[#404348]'}`}>{option}</div>;
+						return <div key={option} onClick={() => onChange(fieldName, option)} className={`hover:bg-[#404348] p-1.5 m-1 text-xs rounded cursor-pointer ${option === value && 'bg-[#404348]'}`}>{option}</div>;
 					})}
 				</div>
 			)}

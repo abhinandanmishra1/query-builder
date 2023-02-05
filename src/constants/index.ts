@@ -1,7 +1,7 @@
 export const defaultRule = {
-  field: "Theme",
-  condition: "Equals",
-  criteria: "Offers",
+  field: "",
+  condition: "",
+  criteria: "",
   type: "rule",
 }
 
