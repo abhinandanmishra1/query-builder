@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Modal from "./components/Modal";
+import GroupComponent from "./components/RuleGroup";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import { useCustomReducer } from "./reducers/useCustomReducer";
 
-export default App;
+const RuleGroups: React.FC = () => {
+	const [toggle, setToggle] = useState(false);
+
+	return (
+		<>
+			{toggle && <Modal setToggle={setToggle} />}
+			<div className={`h-screen bg-black `}>
+				<button
+					onClick={() => setToggle(true)}
+					disabled={toggle}
+					className={`bg-[#5C61F0] hover:bg-[#645CBB] text-white font-bold py-2 px-4 rounded ${toggle && "opacity-70"}`}
+				>
+					Build Query
+				</button>
+			</div>
+		</>
+	);
+};
+
+export default RuleGroups;
