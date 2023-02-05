@@ -16,7 +16,6 @@ export const reducer = (state: any, action: any) => {
 				}),
 			};
 		case "ADD_GROUP":
-			console.log("Add Group is called");
 			return {
 				...state,
 				children: [...state.children, action.payload],

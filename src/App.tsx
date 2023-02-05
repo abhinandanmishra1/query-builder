@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { ToastContainer } from "react-toastify";
 import Modal from "./components/Modal";
 
 const RuleGroups: React.FC = () => {
@@ -11,6 +12,18 @@ const RuleGroups: React.FC = () => {
 					<Modal setToggle={setToggle} />
 				</div>
 			)}
+			<ToastContainer
+				position="top-right"
+				autoClose={5000}
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+				theme="dark"
+			/>
 			<div className={`h-screen bg-black `}>
 				<button
 					onClick={() => setToggle(true)}

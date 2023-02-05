@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState, FC } from "react";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import GroupComponent from "../../components/RuleGroup";
 
+import { buildQuery, checkAllFields } from "../../helpers";
 import { useCustomReducer } from "../../reducers/useCustomReducer";
 
-const Modal: React.FC<any> = ({ setToggle }) => {
+const Modal: FC<any> = ({ setToggle }) => {
 	const {
 		state,
 		addRule,
@@ -14,6 +18,24 @@ const Modal: React.FC<any> = ({ setToggle }) => {
 		updateGroup,
 		setTheme,
 	} = useCustomReducer();
+
+	const [query, setQuery] = useState<string>("");
+
+	const createQuery = () => {
+		if (!checkAllFields(state)) {
+			toast.error('Please fill all the fields', {
+				autoClose: 3000,
+			});
+			return;
+		}
+
+		toast.success('Successfully created query', {
+			autoClose: 5000,
+		});
+
+		const query = buildQuery(state);
+		setQuery(query);
+	};
 
 	return (
 		<div className="border border-[#404348] flex flex-col justify-between text-white w-3/4 m-auto h-5/6 scrollbar-thin scrollbar-thumb-[#1D2025] scrollbar-track-[#404348] overflow-y-scroll scrollbar-thumb-rounded-full scrollbar-track-rounded-full bg-[#1D2025] rounded">
@@ -28,7 +50,7 @@ const Modal: React.FC<any> = ({ setToggle }) => {
 					</button>
 				</div>
 				<div className="bg-[#4338CA] text-sm p-2 rounded w-9/11 ">
-					Query : <span className="text-[#5C61F0]">{state.query}</span>
+					Query : <span className="text-[#fff]">{query}</span>
 				</div>
 			</div>
 			<div className="flex-col justify-end">
@@ -64,6 +86,7 @@ const Modal: React.FC<any> = ({ setToggle }) => {
 					</button>
 					<button
 						className="bg-[#5C61F0] text-sm text-white rounded mt-1 py-1.5 px-3 m-2 "
+						onClick={createQuery}
 					>
 						Finish
 					</button>
